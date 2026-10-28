@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "http_tracking": true,
+  "remote_artifact_proxy": true,
+  "run_status": "FINISHED",
+  "artifact_files": [
+    "model_bundle/evaluation.json",
+    "model_bundle/metadata.json",
+    "model_bundle/model.joblib",
+    "model_bundle/reference.npy"
+  ],
+  "metrics": {
+    "accuracy": 0.6,
+    "f1_positive": 0.6,
+    "roc_auc": 0.74
+  }
+}

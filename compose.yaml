@@ -1,0 +1,43 @@
+services:
+  mlflow:
+    build: .
+    image: text-scoring-service:local
+    command: ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000", "--backend-store-uri", "sqlite:////workspace/tracking/mlflow.db", "--artifacts-destination", "/workspace/mlartifacts", "--allowed-hosts", "localhost:5000,127.0.0.1:5000,mlflow:5000"]
+    ports: ["127.0.0.1:5000:5000"]
+    volumes:
+      - tracking:/workspace/tracking
+      - mlartifacts:/workspace/mlartifacts
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health',timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  train:
+    build: .
+    image: text-scoring-service:local
+    command: ["python", "-m", "scripts.train"]
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes:
+      - model:/workspace/artifacts
+    depends_on:
+      mlflow:
+        condition: service_healthy
+  api:
+    build: .
+    image: text-scoring-service:local
+    ports: ["127.0.0.1:8000:8000"]
+    volumes:
+      - model:/workspace/artifacts:ro
+    depends_on:
+      train:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready',timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  model:
+  tracking:
+  mlartifacts:

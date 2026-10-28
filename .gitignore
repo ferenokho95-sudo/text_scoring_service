@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+artifacts/
+mlruns/
+mlartifacts/
+*.db
+*.db-shm
+*.db-wal
+.env

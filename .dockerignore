@@ -1,0 +1,11 @@
+.venv
+__pycache__
+.pytest_cache
+.git
+artifacts
+reports
+mlruns
+mlartifacts
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,31 @@
+{
+  "status": "ready",
+  "samples": 860,
+  "total_seen": 860,
+  "window_size": 1000,
+  "min_samples": 50,
+  "psi_threshold": 0.2,
+  "drift_detected": true,
+  "features": {
+    "characters": {
+      "psi": 11.121933,
+      "drift_detected": true
+    },
+    "words": {
+      "psi": 5.743949,
+      "drift_detected": true
+    },
+    "cyrillic_ratio": {
+      "psi": 4.945945,
+      "drift_detected": true
+    },
+    "oov_ratio": {
+      "psi": 0.0,
+      "drift_detected": false
+    },
+    "positive_score": {
+      "psi": 4.398145,
+      "drift_detected": true
+    }
+  }
+}

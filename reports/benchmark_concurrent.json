@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-10-28T17:02:32.224076+00:00",
+  "url": "http://127.0.0.1:18000",
+  "measurement": "HTTP round trip, persistent client, full JSON response; training/startup excluded",
+  "model_version": "6b17e4b1ee73",
+  "requests": 200,
+  "warmup_requests": 10,
+  "concurrency": 8,
+  "successful_requests": 200,
+  "failed_requests": 0,
+  "error_types": [],
+  "wall_seconds": 0.5580278790002922,
+  "successful_requests_per_second": 358.4050323046589,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 9
+  },
+  "latency_ms": {
+    "mean": 22.008562494993384,
+    "p50": 22.946719999708876,
+    "p95": 29.778221500419008,
+    "p99": 35.360255690084145,
+    "min": 5.0484870007494465,
+    "max": 38.53173599964066
+  }
+}
